@@ -7,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -29,7 +31,6 @@
             </div>
         </div>
     </div>
-
     <div class="social-icons">
         <a href="https://www.linkedin.com/in/vietht-hl/"><i class="fa-brands fa-linkedin"> </i></a>
         <a href="https://github.com/viet1m96"><i class="fa-brands fa-github"> </i></a>
@@ -48,7 +49,7 @@
                 <div class="input-zone">
                     <label for="coordinateX" class="labels"> Coordinate X: </label>
                     <div class="input-and-condition">
-                        <input id="coordinateX" name="x" type="text" maxlength="4" required>
+                        <input id="coordinateX" name="x" type="text" required>
                         <div class="params_conditions"> (X must be in range [-5, 5]) </div>
                         <div id="xFeedback" class="input-feedback"></div>
                     </div>
@@ -137,6 +138,9 @@
     </div>
 
 </div>
+<script>
+    window.savedR = "${empty sessionScope.lastR ? '' : sessionScope.lastR}";
+</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="${pageContext.request.contextPath}/resources/scripts/DrawingGraph.js"></script>
 <script src="${pageContext.request.contextPath}/resources/scripts/Main.js"></script>

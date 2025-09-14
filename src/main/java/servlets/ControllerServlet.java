@@ -1,6 +1,8 @@
 package servlets;
 
-import Logging.ErrorFactory;
+import jakarta.servlet.http.HttpSession;
+import logging.AppLog;
+import logging.ErrorFactory;
 import exceptions.InputFault;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import validators.ParametersChecker;
+import org.jboss.logging.*;
 
 import java.io.IOException;
 
@@ -21,7 +24,7 @@ public class ControllerServlet extends HttpServlet {
         try {
             process(req, res);
         } catch(ServletException | IOException e) {
-            e.printStackTrace();//tam de the nay
+            AppLog.error(ControllerServlet.class, e.getMessage(), e);
         }
     }
 
@@ -31,6 +34,8 @@ public class ControllerServlet extends HttpServlet {
         String R = req.getParameter("R");
         try {
             ParametersChecker.checkParams(x, y, R);
+            HttpSession session = req.getSession();
+            session.setAttribute("lastR", R);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/areaCheck");
             dispatcher.forward(req, res);
         } catch(InputFault e) {

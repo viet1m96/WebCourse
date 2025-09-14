@@ -1,4 +1,4 @@
-package Logging;
+package logging;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

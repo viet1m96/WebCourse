@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import logging.AppLog;
 import models.Result;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class AreaCheckServlet extends HttpServlet {
         try {
             processRequest(req, res);
         } catch(ServletException | IOException e) {
-            e.printStackTrace();//tam the nay da
+            AppLog.error(AreaCheckServlet.class, e.getMessage(), e);
         }
     }
 

@@ -1,7 +1,7 @@
 let checkX = false;
 let checkY = false;
 let checkR = false;
-let realR = null;
+
 
 const inputX = document.getElementById('coordinateX');
 const xFeedback = document.getElementById('xFeedback');
@@ -12,18 +12,11 @@ const ySelect = document.getElementById('ySelect');
 const xStart = -5;
 const xEnd = 5;
 
-inputX.addEventListener("input", () => {
-   if(inputX.value.startsWith("-")) {
-       inputX.maxLength = 5;
-   } else {
-       inputX.maxLength = 4;
-   }
-});
 function validateNumberInRange(val, start, end) {
     const tmp = val.trim();
     const floatRe = /^[+-]?\d+(\.\d+)?$/;
     if(!floatRe.test(tmp)) return false;
-    const num = parseFloat(val);
+    const num = parseFloat(tmp);
     return !isNaN(num) && num >= start && num <= end;
 }
 
@@ -60,6 +53,9 @@ inputR.addEventListener("change", (e) => {
            } else {
                checkR = true;
                realR = box.value;
+               ctx.clearRect(0, 0, canvas.width, canvas.height);
+               RArea = RDraw * (realR / pretendedR);
+               drawGraph();
            }
        })
    } else if (e.target.matches('input[type="checkbox"][name="R"]') && !e.target.checked) {
@@ -67,6 +63,13 @@ inputR.addEventListener("change", (e) => {
        checkR = false;
     }
 });
+
+inputX.addEventListener("input", (e) => {
+    let value = e.target.value;
+    e.target.value = value.replace(/[^0-9,.-]/g, "");
+})
+
+
 
 
 
