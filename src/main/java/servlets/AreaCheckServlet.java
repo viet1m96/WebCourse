@@ -58,7 +58,7 @@ public class AreaCheckServlet extends HttpServlet {
             session.setAttribute("history", curHistory);
         }
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/jsp/result.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, res);
     }
 

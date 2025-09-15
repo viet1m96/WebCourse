@@ -20,6 +20,20 @@ form.addEventListener('submit', async(e) => {
         return;
     }
     form.submit();
+    // const params = new URLSearchParams(new FormData(form)).toString();
+    // const url = form.action + '?' + params;
+    // fetch(url, {
+    //     headers: {'Accept': 'application/json'},
+    //     credentials: "same-origin"
+    // }).then(resp => {
+    //     if(!resp.ok) throw new Error('HTTP' + resp.status);
+    //     return resp.json();
+    // }).then(data => {
+    //
+    // }).catch(err => {
+    //     console.error('Fetch Error:', err);
+    //     alert('Error in server calling: ' + err.message);
+    // })
 });
 
 
